@@ -1,0 +1,29 @@
+{
+    "name": "xiaoyukarl/jd_biz",
+    "description": "京东商户对接",
+    "type": "library",
+    "keywords": [
+        "php",
+        "京东",
+        "大客户开发平台"
+    ],
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require-dev": {
+
+    },
+    "require": {
+        "php": ">=5.5.0"
+    },
+    "authors": [
+        {
+            "name": "xiaoyukarl",
+            "email": "xiaoyukarl@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "jd\\biz\\": "src/"
+        }
+    }
+}
