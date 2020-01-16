@@ -49,11 +49,18 @@ class ProductRequest extends Request
      * 查询单个商品的详细信息。
      * https://bizapi.jd.com/api/product/getDetail
      * @param string $sku
-     * @param string $queryExts
+     * @param array $queryExts 商品维度扩展字段，当入参输入某个扩展字段后，出参会返回该字段对应的出参。可以根据需要选用。
      * @return array
      */
-    public function getDetail($sku, $queryExts = '')
+    public function getDetail($sku, $queryExts = [])
     {
+        if(empty($queryExts)){
+            $query = [
+                'nintroduction','isEnergySaving','isFactoryShip','taxCode','LowestBuy','capacity','spuId','pName',
+                'isJDLogistics', 'upc69','contractSkuPoolExt','productFeatures','seoModel','isSelf'
+            ];
+            $queryExts = implode(',', $query);
+        }
         $postData = [
             'sku' => $sku,
             'queryExts' => $queryExts

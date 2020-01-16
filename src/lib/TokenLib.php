@@ -27,8 +27,8 @@ class TokenLib
                 $accessTokenData = file_get_contents($accessTokenFile);
                 if(!empty($accessTokenData)){
                     $data = json_decode(base64_decode($accessTokenData), true);
-                    //缓存24小时有效,留5分钟空档
-                    if((time() - $data['expires_in']) <= 86100){
+                    //缓存24小时有效
+                    if((time() - $data['expires_in']) < 0){
                         return HelperLib::returnSuc([
                             'accessToken' => $data['access_token']
                         ]);
