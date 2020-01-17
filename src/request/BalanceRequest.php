@@ -8,6 +8,8 @@
 
 namespace jd\biz\request;
 
+use jd\biz\lib\ConfigLib;
+
 /**
  * 支付API接口
  * Class PayRequest
@@ -19,14 +21,13 @@ class BalanceRequest extends Request
     /**
      * 查询金采和预存款余额的余额。
      * https://bizapi.jd.com/api/price/getUnionBalance
-     * @param string $pin 京东PIN。必须是相同合同下的pin。
      * @param array $type 1：账户余额。2：金采余额。
      * @return array
      */
-    public function getUnionBalance($pin, $type = [1, 2])
+    public function getUnionBalance($type = [1, 2])
     {
         $params = [
-            'pin' => $pin,
+            'pin' => ConfigLib::get('username'),
             'type' => implode(',', $type)
         ];
         return $this->queryApi('api/price/getUnionBalance', $params);

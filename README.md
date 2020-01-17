@@ -72,7 +72,7 @@ PriceRequest.php 商品价格API包含方法
 
 BalanceRequest.php 余额支付API包含方法
 [
-    查询金采和预存款余额的余额 getUnionBalance($pin, $type)
+    查询金采和预存款余额的余额 getUnionBalance($type)
     仅支持预存款余额明细查询，不支持金采余额明细查询 getBalanceDetail($pageNum = 1, $pageSize = 20, $orderNum = '', $startDate = '', $endDate = '')
     下单成功支付失败的情况，可以调用此接口重新支付 payOrder($jdOrderNum)
 ]
