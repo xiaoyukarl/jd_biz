@@ -133,15 +133,21 @@ class OrderRequest extends Request
             return $order;
         }
         foreach ($order['sku'] as $skuNum) {
-            if(!isset($skuNum['skuId']) || !isset($skuNum['num'])  || !isset($skuNum['price']) || !isset($skuNum['bNeedGift']) ){
-                return HelperLib::returnMsg(4012, 'sku数组格式必须为["skuId"=>"*","num"=>"*","price"=>"*","bNeedGift"=>"*",]');
+            if(!isset($skuNum['skuId']) || !isset($skuNum['num']) ){
+                return HelperLib::returnMsg(4012, 'sku数组格式必须为["skuId"=>"*","num"=>"*"]');
             }
             if($skuNum['num'] <= 0){
                 return HelperLib::returnMsg(4012, 'num必须大于0');
             }
         }
-        $order['sku'] = json_encode($order['sku'], JSON_UNESCAPED_UNICODE);
-        return $this->queryApi('api/order/submitOrder', $order);
+        $newOrder = [];
+        foreach ($order as $key=>$value){
+            if(!empty($value)){
+                $newOrder[$key] = $value;
+            }
+        }
+        $newOrder['sku'] = json_encode($newOrder['sku'], JSON_UNESCAPED_UNICODE);
+        return $this->queryApi('api/order/submitOrder', $newOrder);
     }
 
     /**
