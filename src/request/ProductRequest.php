@@ -103,11 +103,10 @@ class ProductRequest extends Request
         if(count($skuIds) > 100){
             return HelperLib::returnMsg(4013, 'skuIds最多支持100种商品');
         }
-        $url = $this->getFullUrl('api/product/skuState');
         $postData = [
             'sku' => implode(',', $skuIds),
         ];
-        return $this->queryApi($url, $postData);
+        return $this->queryApi('api/product/skuState', $postData);
     }
 
     /**
