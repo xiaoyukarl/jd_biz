@@ -1,4 +1,5 @@
 ####京东大客户开发平台VOP对接
+#### 京东VOP文档地址 `https://vop.jd.com/doc/api`
 ##### 使用方法
 - 下载此包 `composer require xiaoyukarl/jd_biz`
 - 修改配置文件config.php
